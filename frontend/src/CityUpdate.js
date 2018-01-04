@@ -6,10 +6,12 @@ class CityUpdate extends Component {
 
     this.state = {
       tempText: "",
-      valid: true
+      valid: true,
+      submitting: false
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Assumes that all valid integers are valid temperatures
@@ -28,6 +30,21 @@ class CityUpdate extends Component {
       tempText: newTemp,
       valid: this.isValidTemp(newTemp)
     })
+  }
+
+  handleSubmit() {
+    // The state will be valid when the page loads to avoid showing error messages when the
+    // user opens the page. Double check validity to ensure that the temperature input is valid
+    if (!this.isValidTemp(this.state.tempText)) {
+      this.setState({
+        valid: false
+      });
+      return;
+    }
+
+    this.setState({
+      submitting: true
+    });
   }
 
   render() {
@@ -50,7 +67,11 @@ class CityUpdate extends Component {
           </div>
         </div>
         <div className="control">
-          <button className={"button " + (this.state.valid ? "is-primary" : "is-static")}>Submit</button>
+          <button
+            className={"button " + (this.state.valid ? "is-primary " : "is-static ") + (this.state.submitting && "is-loading") }
+            onClick={this.handleSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     );
