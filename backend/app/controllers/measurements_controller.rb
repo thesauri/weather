@@ -2,7 +2,7 @@ class MeasurementsController < ApplicationController
     def create
         measurement = Measurement.create(city_id: params[:city_id], temperature: params[:temperature])
         if measurement.save
-            render json: measurement
+            render json: measurement, include: 'city'
         else
             render json: measurement, status: 400, serializer: ActiveModel::Serializer::ErrorSerializer
         end

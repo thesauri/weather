@@ -17,6 +17,7 @@ class App extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleCityUpdate = this.handleCityUpdate.bind(this);
     this.fetchCities = this.fetchCities.bind(this);
+    this.cityUpdated = this.cityUpdated.bind(this);
   }
 
   componentDidMount() {
@@ -35,15 +36,29 @@ class App extends Component {
       });
   }
 
-  // Changed: true if a new temperature has been submitted
   closeModal(changed) {
-    if (changed) {
-      // This code is executed after the submission has been successful. However, sometimes it
-      // would still fetch the old data. This gives a moment for the changes to persist properly.
-      setTimeout(this.fetchCities, 500);
-    }
     this.setState({
       modalOpen: false
+    });
+  }
+
+  // Called when a city has been updated, the new state for that city is passed
+  cityUpdated(city) {
+    this.closeModal();
+
+    // Update the city state of the updated city
+    // It would have been convenient to have the cities as a map pointing by id now... 
+    const newCities = this.state.cities;
+
+    for (let i = 0; i < newCities.length; i++) {
+      if (newCities[i].id === city.id) {
+        newCities[i] = city;
+        break;
+      }
+    }
+
+    this.setState({
+      citites: newCities
     });
   }
 
@@ -67,7 +82,7 @@ class App extends Component {
                   active={true}
                   title={`Update weather information for ${this.state.updateCity.attributes.name}`}
                   onClose={this.closeModal}>
-                  <CityUpdate city={this.state.updateCity} onUpdate={() => this.closeModal(true)} />
+                  <CityUpdate city={this.state.updateCity} onUpdate={(newCity) => this.cityUpdated(newCity)} />
                 </Modal>
               }
           </div>

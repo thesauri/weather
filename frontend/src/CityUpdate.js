@@ -73,7 +73,7 @@ class CityUpdate extends Component {
           const errors = result.errors.map((error) => error.detail);
           this.setState({ errors, valid: false, submitting: false });
         } else {
-          this.props.onUpdate();
+          this.props.onUpdate(result.included[0]);
         }
       })
       .catch((error) => {
