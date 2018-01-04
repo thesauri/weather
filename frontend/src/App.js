@@ -3,6 +3,7 @@ import './App.css';
 import CityList from './CityList';
 import CityUpdate from './CityUpdate';
 import Modal from './Modal';
+import Navbar from './Navbar';
 
 class App extends Component {
   constructor(props) {
@@ -56,19 +57,22 @@ class App extends Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-            <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
-            { this.state.modalOpen &&
-              <Modal
-                active={true}
-                title={`Update weather information for ${this.state.updateCity.attributes.name}`}
-                onClose={this.closeModal}>
-                <CityUpdate city={this.state.updateCity} onUpdate={() => this.closeModal(true)} />
-              </Modal>
-            }
-        </div>
-      </section>
+      <div>
+        <Navbar />
+        <section className="section">
+          <div className="container">
+              <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
+              { this.state.modalOpen &&
+                <Modal
+                  active={true}
+                  title={`Update weather information for ${this.state.updateCity.attributes.name}`}
+                  onClose={this.closeModal}>
+                  <CityUpdate city={this.state.updateCity} onUpdate={() => this.closeModal(true)} />
+                </Modal>
+              }
+          </div>
+        </section>
+      </div>
     );
   }
 }
