@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ErrorMessage from './ErrorMessage';
 
 class CityUpdate extends Component {
   constructor(props) {
@@ -84,11 +85,7 @@ class CityUpdate extends Component {
     return (
       <div>
         { (this.state.errors.length > 0 ) &&
-          <article className="message is-danger">
-            <div className="message-body">
-              Error: { this.state.errors.join(", ") }
-            </div>
-          </article>
+          <ErrorMessage text={this.state.errors.join(", ")} />
         }
         <label className="label">Current temperature</label>
         { !this.state.valid && <p className="help is-danger">Invalid temperature</p> }
