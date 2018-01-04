@@ -4,7 +4,7 @@ class MeasurementsController < ApplicationController
         if measurement.save
             render json: measurement
         else
-            render json: measurement, serializer: ActiveModel::Serializer::ErrorSerializer
+            render json: measurement, status: 400, serializer: ActiveModel::Serializer::ErrorSerializer
         end
     end
 end
