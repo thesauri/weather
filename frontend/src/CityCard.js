@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import timeago from 'timeago.js';
 
 class CityCard extends Component {
   render() {
@@ -7,7 +8,10 @@ class CityCard extends Component {
     const lowHighText = this.props.low ?
       `Today's high was ${this.props.high}°C and the low was ${this.props.low}°C` :
       "No data from the last 24 hours";
-    const updateText = "Last update: " + (this.props.updatedAt ? this.props.updatedAt : "—");
+    const updateText = "Last update: " + (this.props.updatedAt ?
+      timeago().format(new Date(this.props.updatedAt)) :
+      "—"
+    );
     return (
       <div className="card is-inline-block">
           <div className="card-content">
