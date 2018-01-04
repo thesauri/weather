@@ -47,10 +47,10 @@ class App extends Component {
   }
 
   // The user wants to update a cities temperature status
-  handleCityUpdate(cityId) {
+  handleCityUpdate(city) {
     this.setState({
       modalOpen: true,
-      updateCityId: cityId
+      updateCity: city
     });
   }
 
@@ -62,9 +62,9 @@ class App extends Component {
             { this.state.modalOpen &&
               <Modal
                 active={true}
-                title="Update weather information"
+                title={`Update weather information for ${this.state.updateCity.attributes.name}`}
                 onClose={this.closeModal}>
-                <CityUpdate cityId={this.state.updateCityId} onUpdate={() => this.closeModal(true)} />
+                <CityUpdate city={this.state.updateCity} onUpdate={() => this.closeModal(true)} />
               </Modal>
             }
         </div>

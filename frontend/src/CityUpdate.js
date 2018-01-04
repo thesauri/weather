@@ -50,7 +50,7 @@ class CityUpdate extends Component {
     });
 
     const body = {
-      city_id: this.props.cityId,
+      city_id: this.props.city.id,
       temperature: this.state.temperature
     }
 
@@ -113,7 +113,7 @@ class CityUpdate extends Component {
 }
 
 CityUpdate.propTypes = {
-  cityId: PropTypes.string.isRequired,
+  city: PropTypes.object, // Could be specified further
   onUpdate: PropTypes.func
 };
 

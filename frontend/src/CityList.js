@@ -7,7 +7,7 @@ class CityList extends Component {
     const cityCards = this.props.cities.map((city) => (
       <CityCard
         key={city.id}
-        onCityUpdate={() => this.props.onCityUpdate(city.id)}
+        onCityUpdate={() => this.props.onCityUpdate(city)}
         name={city.attributes.name}
         temperature={city.attributes.temperature && city.attributes.temperature.temperature}
         low={city.attributes.low && city.attributes.low.temperature}
