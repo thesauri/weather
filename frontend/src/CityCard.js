@@ -11,7 +11,7 @@ class CityCard extends Component {
     const updateText = this.props.updatedAt ? timeago().format(new Date(this.props.updatedAt)) : "No data";
     const mapUrl = `https://www.google.com/maps/?q=${this.props.latitude},${this.props.longitude}`;
     return (
-      <div className={"card is-inline-block " + styles.card}>
+      <div className={"card is-inline-block has-text-left " + styles.card}>
           <div className="card-content">
             <div className="level">
               <div className="level-item media-left">
