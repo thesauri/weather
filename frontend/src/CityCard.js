@@ -7,6 +7,7 @@ class CityCard extends Component {
     const lowHighText = this.props.low ?
       `Today's high was ${this.props.high}°C and the low was ${this.props.low}°C` :
       "No data from the last 24 hours";
+    const updateText = "Last update: " + (this.props.updatedAt ? this.props.updatedAt : "—");
     return (
       <div className="card is-inline-block">
           <div className="card-content">
@@ -22,7 +23,7 @@ class CityCard extends Component {
             </div>
             <div className="content">
               <p>{ lowHighText }</p>
-              <p>{ this.props.updatedAt }</p>
+              <p>{ updateText }</p>
             </div>
           </div>
           <div className="card-footer">
