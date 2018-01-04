@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import timeago from 'timeago.js';
+import styles from './CityCard.css';
 
 class CityCard extends Component {
   render() {
@@ -10,7 +11,7 @@ class CityCard extends Component {
     const updateText = this.props.updatedAt ? timeago().format(new Date(this.props.updatedAt)) : "No data";
     const mapUrl = `https://www.google.com/maps/?q=${this.props.latitude},${this.props.longitude}`;
     return (
-      <div className="card is-inline-block media-left">
+      <div className={"card is-inline-block " + styles.card}>
           <div className="card-content">
             <div className="level">
               <div className="level-item media-left">
