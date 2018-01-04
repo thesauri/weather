@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CityUpdate extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tempText: "",
+      temperature: "",
       valid: true,
-      submitting: false
+      submitting: false,
+      errors: [] // Errors returned from the server
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,8 +18,8 @@ class CityUpdate extends Component {
 
   // Assumes that all valid integers are valid temperatures
   // Range checking could be implemented here too
-  isValidTemp(tempText) {
-    return !isNaN(parseInt(tempText, 10));
+  isValidTemp(temperature) {
+    return !isNaN(parseInt(temperature, 10));
   }
 
   handleChange(event) {
@@ -27,7 +29,7 @@ class CityUpdate extends Component {
     // the value is invalid
     // Note: parseInt seems to parse "123xyz" as 123. It will thus show up as valid.
     this.setState({
-      tempText: newTemp,
+      temperature: newTemp,
       valid: this.isValidTemp(newTemp)
     })
   }
@@ -35,7 +37,7 @@ class CityUpdate extends Component {
   handleSubmit() {
     // The state will be valid when the page loads to avoid showing error messages when the
     // user opens the page. Double check validity to ensure that the temperature input is valid
-    if (!this.isValidTemp(this.state.tempText)) {
+    if (!this.isValidTemp(this.state.temperature)) {
       this.setState({
         valid: false
       });
@@ -45,11 +47,49 @@ class CityUpdate extends Component {
     this.setState({
       submitting: true
     });
+
+    const body = {
+      city_id: this.props.cityId,
+      temperature: this.state.temperature
+    }
+
+    const params = {
+      method: "post",
+      mode: "cors",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(body)
+    };
+  
+    fetch("http://localhost:4000/measurements", params)
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.errors) {
+          const errors = result.errors.map((error) => error.detail);
+          this.setState({ errors, valid: false });
+        } else {
+          alert("Updated");
+        }
+        this.setState({
+          submitting: false
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     return (
       <div>
+        { (this.state.errors.length > 0 ) &&
+          <article className="message is-danger">
+            <div className="message-body">
+              Error: { this.state.errors.join(", ") }
+            </div>
+          </article>
+        }
         <label className="label">Current temperature</label>
         { !this.state.valid && <p className="help is-danger">Invalid temperature</p> }
         <div className="field has-addons">
@@ -58,7 +98,7 @@ class CityUpdate extends Component {
               className="input"
               type="text"
               placeholder="Text input"
-              value={this.state.tempText}
+              value={this.state.temperature}
               onChange={this.handleChange}
               autoFocus />
           </div>
@@ -77,6 +117,9 @@ class CityUpdate extends Component {
     );
   }
 }
-  
-  export default CityUpdate;
-  
+
+CityUpdate.propTypes = {
+  cityId: PropTypes.string.isRequired
+};
+
+export default CityUpdate;
