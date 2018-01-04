@@ -20,7 +20,8 @@ class CityUpdate extends Component {
   // Assumes that all valid integers are valid temperatures
   // Range checking could be implemented here too
   isValidTemp(temperature) {
-    return !isNaN(parseInt(temperature, 10));
+    const parsedTemp = parseInt(temperature, 10);
+    return !isNaN(parsedTemp) && parsedTemp < 100 && parsedTemp > -100;
   }
 
   handleChange(event) {
