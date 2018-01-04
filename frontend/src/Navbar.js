@@ -8,13 +8,15 @@ const Navbar = () => (
           <span className="media-right">Weather</span>
       </a>
     </div>
-    <div className="navbar-end">
-      <a className="navbar-item" href="https://github.com/thesauri/weather" target="_blank">
-        <span className="icon">
-          <i className="fa fa-github"></i>
-        </span>
-        <span>Github</span>
-      </a>
+    <div className="navbar-menu is-active">
+      <div className="navbar-end">
+        <a className="navbar-item" href="https://github.com/thesauri/weather" target="_blank">
+          <span className="icon">
+            <i className="fa fa-github"></i>
+          </span>
+          <span>Github</span>
+        </a>
+      </div>
     </div>
   </nav>
 );
