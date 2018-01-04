@@ -22,7 +22,7 @@ class CityCard extends Component {
             </div>
             <div className="content">
               <p>{ lowHighText }</p>
-              <p>Last update: 5 minutes ago</p>
+              <p>{ this.props.updatedAt }</p>
             </div>
           </div>
           <div className="card-footer">
@@ -38,7 +38,8 @@ CityCard.propTypes = {
   name: PropTypes.string.isRequired,
   temperature: PropTypes.string,
   low: PropTypes.string,
-  high: PropTypes.string
+  high: PropTypes.string,
+  updatedAt: PropTypes.string
 }
 
 

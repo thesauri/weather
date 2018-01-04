@@ -30,7 +30,8 @@ class CityList extends Component {
         name={city.attributes.name}
         temperature={city.attributes.temperature && city.attributes.temperature.temperature}
         low={city.attributes.low && city.attributes.low.temperature}
-        high={city.attributes.high && city.attributes.high.temperature} />
+        high={city.attributes.high && city.attributes.high.temperature}
+        updatedAt={city.attributes.temperature && city.attributes.temperature.updated_at} />
     ));
     return (
       <div>
