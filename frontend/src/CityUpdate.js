@@ -35,7 +35,9 @@ class CityUpdate extends Component {
     })
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
+
     // The state will be valid when the page loads to avoid showing error messages when the
     // user opens the page. Double check validity to ensure that the temperature input is valid
     if (!this.isValidTemp(this.state.temperature)) {
@@ -80,7 +82,7 @@ class CityUpdate extends Component {
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         { (this.state.errors.length > 0 ) &&
           <ErrorMessage text={this.state.errors.join(", ")} />
         }
@@ -102,12 +104,11 @@ class CityUpdate extends Component {
         </div>
         <div className="control">
           <button
-            className={"button " + (this.state.valid ? "is-primary " : "is-static ") + (this.state.submitting && "is-loading") }
-            onClick={this.handleSubmit}>
+            className={"button " + (this.state.valid ? "is-info " : "is-static ") + (this.state.submitting && "is-loading") }>
             Submit
           </button>
         </div>
-      </div>
+      </form>
     );
   }
 }
