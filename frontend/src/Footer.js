@@ -7,7 +7,7 @@ export default (props) => (
       <div className="content has-text-centered">
         <p>
           By <strong>Walter Berggren</strong>. Built for Reaktor's summer job challenge. Click
-          <a onClick={reset}>
+          <a onClick={() => reset(() => window.location.reload())}>
             <span> here </span>
           </a>
           to reset the application.
