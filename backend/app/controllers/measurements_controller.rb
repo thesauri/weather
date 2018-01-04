@@ -7,4 +7,9 @@ class MeasurementsController < ApplicationController
             render json: measurement, status: 400, serializer: ActiveModel::Serializer::ErrorSerializer
         end
     end
+
+    def reset
+        Measurement.delete_all
+        render json: Measurement.all
+    end
 end

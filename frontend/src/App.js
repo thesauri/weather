@@ -4,6 +4,7 @@ import CityList from './CityList';
 import CityUpdate from './CityUpdate';
 import Modal from './Modal';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 class App extends Component {
   constructor(props) {
@@ -72,9 +73,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Navbar />
-        <section className="section">
+        <main className="section">
           <div className="container">
               <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
               { this.state.modalOpen &&
@@ -86,7 +87,8 @@ class App extends Component {
                 </Modal>
               }
           </div>
-        </section>
+        </main>
+        <Footer />
       </div>
     );
   }
