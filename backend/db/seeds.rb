@@ -13,3 +13,9 @@ City.create([
     { name: 'Amsterdam', latitude: 52.3650691, longitude: 4.9040238 },
     { name: 'Dubai', latitude: 25.092535, longitude: 55.1562243 }
 ])
+
+Measurement.create([
+    { temperature: -10, city: City.all.first },
+    { temperature: -5, city: City.all.first },
+    { temperature: -7, city: City.all.first }
+])
