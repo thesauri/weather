@@ -68,13 +68,10 @@ class CityUpdate extends Component {
       .then((result) => {
         if (result.errors) {
           const errors = result.errors.map((error) => error.detail);
-          this.setState({ errors, valid: false });
+          this.setState({ errors, valid: false, submitting: false });
         } else {
-          alert("Updated");
+          this.props.onUpdate();
         }
-        this.setState({
-          submitting: false
-        });
       })
       .catch((error) => {
         console.error(error);
@@ -116,7 +113,8 @@ class CityUpdate extends Component {
 }
 
 CityUpdate.propTypes = {
-  cityId: PropTypes.string.isRequired
+  cityId: PropTypes.string.isRequired,
+  onUpdate: PropTypes.func
 };
 
 export default CityUpdate;

@@ -40,7 +40,7 @@ class App extends Component {
                 active={true}
                 title="Update weather information"
                 onClose={this.closeModal}>
-                <CityUpdate cityId={this.state.updateCityId} />
+                <CityUpdate cityId={this.state.updateCityId} onUpdate={this.closeModal} />
               </Modal>
             }
         </div>
