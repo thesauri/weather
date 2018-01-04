@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104121704) do
+ActiveRecord::Schema.define(version: 20180104131354) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 20180104121704) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "temperatures", force: :cascade do |t|
+  create_table "measurements", force: :cascade do |t|
     t.decimal "temperature", precision: 5, scale: 2
     t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_temperatures_on_city_id"
+    t.index ["city_id"], name: "index_measurements_on_city_id"
   end
 
 end
