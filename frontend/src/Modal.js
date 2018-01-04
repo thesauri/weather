@@ -10,7 +10,7 @@ class Modal extends Component {
           <div className="modal-card">
             <header className="modal-card-head">
               <p className="modal-card-title">{this.props.title}</p>
-              <button className="delete" aria-label="close"></button>
+              <button className="delete" aria-label="close" onClick={this.props.onClose}></button>
             </header>
             <section className="modal-card-body">
               {this.props.children}
@@ -26,6 +26,7 @@ class Modal extends Component {
 Modal.propTypes = {
   active: PropTypes.bool,
   title: PropTypes.string,
+  onClose: PropTypes.func,
   children: PropTypes.element
 };
 
