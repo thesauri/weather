@@ -17,7 +17,7 @@ class CityList extends Component {
         longitude={city.attributes.longitude} />
     ));
     return (
-      <div>
+      <div className="has-text-centered">
         {cityCards}
       </div>
     );
