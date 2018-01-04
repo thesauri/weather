@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ErrorMessage from './ErrorMessage';
+import { updateCity } from './api';
 
 class CityUpdate extends Component {
   constructor(props) {
@@ -51,34 +52,15 @@ class CityUpdate extends Component {
     this.setState({
       submitting: true
     });
-
-    const body = {
-      city_id: this.props.city.id,
-      temperature: this.state.temperature
-    }
-
-    const params = {
-      method: "post",
-      mode: "cors",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify(body)
-    };
   
-    fetch("http://localhost:4000/measurements", params)
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.errors) {
-          const errors = result.errors.map((error) => error.detail);
-          this.setState({ errors, valid: false, submitting: false });
-        } else {
-          this.props.onUpdate(result.included[0]);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    updateCity(this.props.city.id, this.state.temperature, (result) => {
+      if (result.errors) {
+        const errors = result.errors.map((error) => error.detail);
+        this.setState({ errors, valid: false, submitting: false });
+      } else {
+        this.props.onUpdate(result.included[0]);
+      }
+    });
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { fetchCities } from './api';
 import CityList from './CityList';
 import CityUpdate from './CityUpdate';
 import Modal from './Modal';
@@ -17,24 +18,11 @@ class App extends Component {
 
     this.closeModal = this.closeModal.bind(this);
     this.handleCityUpdate = this.handleCityUpdate.bind(this);
-    this.fetchCities = this.fetchCities.bind(this);
     this.cityUpdated = this.cityUpdated.bind(this);
   }
 
   componentDidMount() {
-    this.fetchCities();
-  }
-
-  fetchCities() {
-    fetch("http://localhost:4000/cities")
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({
-          cities: result.data
-        });
-      }).catch((error) => {
-        console.error(error);
-      });
+    fetchCities((result) => this.setState({ cities: result.data }));
   }
 
   closeModal(changed) {
