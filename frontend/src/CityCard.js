@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CityCard extends Component {
   render() {
@@ -19,12 +20,17 @@ class CityCard extends Component {
             </div>
           </div>
           <div className="card-footer">
-              <a href="#" className="card-footer-item">View</a>
-            </div>
+            <a href="#" className="card-footer-item" onClick={this.props.onCityUpdate}>Update</a>
+          </div>
       </div>
     );
   }
 }
-  
-  export default CityCard;
+
+CityCard.propTypes = {
+  onCityUpdate: PropTypes.func.isRequired
+}
+
+
+export default CityCard;
   
