@@ -57,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <section className="section">
-        <div className="container is-fluid is-fullheight">
+        <div className="container">
             <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
             { this.state.modalOpen &&
               <Modal

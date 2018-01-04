@@ -5,30 +5,33 @@ import timeago from 'timeago.js';
 class CityCard extends Component {
   render() {
     const tempText = this.props.temperature ? `${this.props.temperature}°C` : "—";
-    const lowHighText = this.props.low ?
-      `Today's high was ${this.props.high}°C and the low was ${this.props.low}°C` :
-      "No data from the last 24 hours";
-    const updateText = "Last update: " + (this.props.updatedAt ?
-      timeago().format(new Date(this.props.updatedAt)) :
-      "—"
-    );
+    const high = this.props.high ? `${this.props.high}°C` : "—";
+    const low = this.props.low ? `${this.props.low}°C` : "—";
+    const updateText = this.props.updatedAt ? timeago().format(new Date(this.props.updatedAt)) : "No data";
     const mapUrl = `https://www.google.com/maps/?q=${this.props.latitude},${this.props.longitude}`;
     return (
-      <div className="card is-inline-block">
+      <div className="card is-inline-block media-left">
           <div className="card-content">
-            <div className="media">
-              <div className="media-left">
-                  <h1 className="is-title">
+            <div className="level">
+              <div className="level-item media-left">
+                  <h1 className="is-title is-size-2 has-text-weight-bold">
                      { tempText }
                   </h1>
               </div>
-              <div className="media-content">
-                  <p className="title is-4">{this.props.name}</p>
+              <div className="level-item">
+                  <p className="title is-4 has-text-weight-light">{this.props.name}</p>
               </div>
             </div>
             <div className="content">
-              <p>{ lowHighText }</p>
-              <p>{ updateText }</p>
+              <p className="is-marginless has-text-weight-light is-uppercase media-left">
+                <span className="media-left">High</span> <strong>{high}</strong>
+              </p>
+              <p className="is-marginless has-text-weight-light is-uppercase  media-left">
+                <span className="media-left">Low</span> <strong>{low}</strong>
+              </p>
+              <p className="is-marginless has-text-weight-light is-uppercase is-italic">
+                {updateText}
+              </p>
             </div>
           </div>
           <div className="card-footer">
