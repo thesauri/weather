@@ -12,6 +12,7 @@ class CityCard extends Component {
       timeago().format(new Date(this.props.updatedAt)) :
       "—"
     );
+    const mapUrl = `https://www.google.com/maps/?q=${this.props.latitude},${this.props.longitude}`;
     return (
       <div className="card is-inline-block">
           <div className="card-content">
@@ -31,7 +32,12 @@ class CityCard extends Component {
             </div>
           </div>
           <div className="card-footer">
-            <a href="#" className="card-footer-item" onClick={this.props.onCityUpdate}>Update</a>
+            <a href="#" className="card-footer-item" onClick={this.props.onCityUpdate}>
+              <span className="icon"><i className="fa fa-pencil"></i></span> Update
+            </a>
+            <a href={mapUrl} className="card-footer-item" target="_blank">
+              <span className="icon"><i className="fa fa-external-link"></i></span> Map
+            </a>
           </div>
       </div>
     );
@@ -44,7 +50,9 @@ CityCard.propTypes = {
   temperature: PropTypes.string,
   low: PropTypes.string,
   high: PropTypes.string,
-  updatedAt: PropTypes.string
+  updatedAt: PropTypes.string,
+  latitude: PropTypes.string,
+  longitude: PropTypes.string
 }
 
 
