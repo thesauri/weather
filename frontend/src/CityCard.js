@@ -33,4 +33,3 @@ CityCard.propTypes = {
 
 
 export default CityCard;
-  
