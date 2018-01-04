@@ -10,6 +10,8 @@ class MeasurementsController < ApplicationController
 
     def reset
         Measurement.delete_all
+        City.delete_all # !!
+        Rails.application.load_seed
         render json: Measurement.all
     end
 end

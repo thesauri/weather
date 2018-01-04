@@ -17,5 +17,8 @@ City.create([
 Measurement.create([
     { temperature: -10, city: City.all.first },
     { temperature: -5, city: City.all.first },
-    { temperature: -7, city: City.all.first }
+    { temperature: 6, city: City.all.second },
+    { temperature: 1, city: City.all.second },
+    { temperature: 21, city: City.all.fifth },
+    { temperature: 18, city: City.all.fifth }
 ])
