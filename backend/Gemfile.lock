@@ -73,6 +73,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    pg (0.21.0)
     puma (3.11.0)
     rack (2.0.3)
     rack-cors (1.0.2)
@@ -134,6 +135,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.7)
   byebug
   listen (>= 3.0.5, < 3.2)
+  pg
   puma (~> 3.7)
   rack-cors
   rails (~> 5.1.4)
