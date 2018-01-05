@@ -1,5 +1,9 @@
+const url = process.env.NODE_ENV === "production" ?
+  "https://weather-reporting.herokuapp.com" :
+  "http://localhost:4000";
+
 export const fetchCities = (onSuccess) => {
-  fetch("http://localhost:4000/cities")
+  fetch(`${url}/cities`)
     .then((response) => response.json())
     .then((result) => {
       return onSuccess(result);
@@ -23,7 +27,7 @@ export const updateCity = (cityId, temperature, onSuccess) => {
     body: JSON.stringify(body)
   };
 
-  fetch("http://localhost:4000/measurements", params)
+  fetch(`${url}/measurements`, params)
     .then((response) => response.json())
     .then((result) => {
       return onSuccess(result);
@@ -39,7 +43,7 @@ export const reset = (onSuccess) => {
       mode: "cors"
   };
     
-  fetch("http://localhost:4000/measurements/reset", params)
+  fetch(`${url}/measurements/reset`, params)
     .then((response) => response.json())
     .then((result) => {
         return onSuccess(result);
