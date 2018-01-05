@@ -12,7 +12,7 @@ export const updateCity = (cityId, temperature, onSuccess) => {
   const body = {
     city_id: cityId,
     temperature: temperature
-  }
+  };
 
   const params = {
     method: "post",

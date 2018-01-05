@@ -15,7 +15,7 @@ class App extends Component {
       modalOpen: false,
       cities: [],
       fetchingCities: true
-    }
+    };
 
     this.closeModal = this.closeModal.bind(this);
     this.handleCityUpdate = this.handleCityUpdate.bind(this);
