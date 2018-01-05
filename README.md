@@ -1,4 +1,3 @@
-# Weather
 ![Screenshot](https://github.com/thesauri/weather/raw/master/screenshot.png "Screenshot")
 
 This is a small weather reporting application developed for [Reaktor's summer job challenge](https://github.com/reaktor/kesa-2018). Users can see weather observations from a set of citites around the globe and contribute with their own observations. The project consists of a frontend and a backend that have been split into two seperate entities. The frontend is built using React and communicates with the Rails backend using REST.
