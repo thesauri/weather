@@ -13,7 +13,8 @@ class App extends Component {
 
     this.state = {
       modalOpen: false,
-      cities: []
+      cities: [],
+      fetchingCities: true
     }
 
     this.closeModal = this.closeModal.bind(this);
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchCities((result) => this.setState({ cities: result.data }));
+    fetchCities((result) => this.setState({ cities: result.data, fetchingCities: false }));
   }
 
   closeModal(changed) {
@@ -65,15 +66,21 @@ class App extends Component {
         <Navbar />
         <main className="section">
           <div className="container">
+            { this.state.fetchingCities ? (
+              <div className="container has-text-centered">
+                <a class="button is-loading">Loading</a>
+              </div>
+            ) : (
               <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
-              { this.state.modalOpen &&
-                <Modal
-                  active={true}
-                  title={`Update weather information for ${this.state.updateCity.attributes.name}`}
-                  onClose={this.closeModal}>
-                  <CityUpdate city={this.state.updateCity} onUpdate={(newCity) => this.cityUpdated(newCity)} />
-                </Modal>
-              }
+            )}
+            { this.state.modalOpen &&
+              <Modal
+                active={true}
+                title={`Weather update: ${this.state.updateCity.attributes.name}`}
+                onClose={this.closeModal}>
+                <CityUpdate city={this.state.updateCity} onUpdate={(newCity) => this.cityUpdated(newCity)} />
+              </Modal>
+            }
           </div>
         </main>
         <Footer />
