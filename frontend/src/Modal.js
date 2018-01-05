@@ -1,5 +1,5 @@
 // Bulma Modal component
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Modal = (props) => (
