@@ -8,4 +8,4 @@ One specification was to verify that the entries are done sane. This application
 
 The backend is hosted on Heroku and entries are persisted to a PostgreSQL database.
 
-Feel free to play around with the application, it can be reset at any time with the reset button in the footer.
+Feel free to play around with the application, it can be reset at any time using the reset button in the footer.
