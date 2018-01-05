@@ -36,7 +36,7 @@ class CityCard extends Component {
             </div>
           </div>
           <div className="card-footer">
-            <a href="#" className="card-footer-item" onClick={this.props.onCityUpdate}>
+            <a className="card-footer-item" onClick={this.props.onCityUpdate}>
               <span className="icon"><i className="fa fa-pencil"></i></span> Update
             </a>
             <a href={mapUrl} className="card-footer-item" target="_blank">

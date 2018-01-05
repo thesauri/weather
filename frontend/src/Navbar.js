@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Navbar = () => (
-  <nav className="navbar is-info" role="navigation" aria-label="main navigation">
+  <nav className="navbar is-info" aria-label="main navigation">
     <div className="navbar-brand">
       <a className="navbar-item is-size-2 has-text-weight-bold">
           <span className="icon"><i className="fa fa-sun-o"></i></span>
@@ -10,7 +10,11 @@ const Navbar = () => (
     </div>
     <div className="navbar-menu is-active">
       <div className="navbar-end">
-        <a className="navbar-item" href="https://github.com/thesauri/weather" target="_blank">
+        <a
+          className="navbar-item"
+          href="https://github.com/thesauri/weather"
+          target="_blank"
+          rel="noopener noreferrer">
           <span className="icon">
             <i className="fa fa-github"></i>
           </span>

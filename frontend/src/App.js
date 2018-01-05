@@ -68,7 +68,7 @@ class App extends Component {
           <div className="container">
             { this.state.fetchingCities ? (
               <div className="container has-text-centered">
-                <a class="button is-loading">Loading</a>
+                <a className="button is-loading">Loading</a>
               </div>
             ) : (
               <CityList onCityUpdate={this.handleCityUpdate} cities={this.state.cities} />
