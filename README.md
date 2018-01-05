@@ -4,7 +4,7 @@ This is a small weather reporting application developed for [Reaktor's summer jo
 
 A live demo can be found here: https://thesauri.github.io/weather/.
 
-One specification was to verify that the entries are done sane. This application considers all numerical values between -100°C–100°C to be valid (leaving some room for climate change). This is verified both in the frontend and the backend. The former gives users instant feedback on invalid entries and the latter prevents malicious entries from being POSTed directly to the server. Tests have been written for the backend entry verification.
+One specification was to verify that entries are sane. This application considers all numerical values between -100°C–100°C to be valid (leaving some room for climate change). This is verified both in the frontend and the backend. The former gives users instant feedback on invalid entries and the latter prevents malicious entries from being POSTed directly to the server. Tests have been written for the backend entry verification.
 
 The backend is hosted on Heroku and entries are persisted to a PostgreSQL database.
 
