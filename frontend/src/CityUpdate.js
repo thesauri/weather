@@ -76,7 +76,7 @@ class CityUpdate extends Component {
             <input
               className="input"
               type="number"
-              placeholder="Text input"
+              placeholder="E.g. 18"
               value={this.state.temperature}
               onChange={this.handleChange}
               autoFocus />
