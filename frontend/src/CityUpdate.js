@@ -75,7 +75,7 @@ class CityUpdate extends Component {
           <div className="control">
             <input
               className="input"
-              type="text"
+              type="number"
               placeholder="Text input"
               value={this.state.temperature}
               onChange={this.handleChange}
